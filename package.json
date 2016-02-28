@@ -1,0 +1,19 @@
+{
+  "name": "fetch-images",
+  "version": "0.0.1",
+  "description": "Function for preloading images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zmoki/fetch-images.git"
+  },
+  "author": "Zarema Khalilova",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zmoki/fetch-images/issues"
+  },
+  "homepage": "https://github.com/Zmoki/fetch-images#readme"
+}
