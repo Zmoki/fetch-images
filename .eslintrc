@@ -1,0 +1,19 @@
+{
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "forOf": true,
+    "modules": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "spread": true,
+    "templateStrings": true
+  },
+  "rules": {
+    "quotes": [2, "single"],
+    "no-var": 2
+  }
+}
