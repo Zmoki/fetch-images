@@ -5,7 +5,7 @@ module.exports = (config) => {
     frameworks: ['mocha'],
     client: {
       mocha: {
-        timeout: 15000
+        timeout: 60000
       }
     },
     browsers: ['Chrome'],
@@ -15,7 +15,7 @@ module.exports = (config) => {
     autoWatch: true,
     singleRun: false,
     concurrency: Infinity,
-    timeout: 15000,
+    browserNoActivityTimeout: 60000,
     files: [
       'test/**/*.js'
     ],
