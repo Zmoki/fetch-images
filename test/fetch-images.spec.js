@@ -90,22 +90,16 @@ describe('fetchImages to be resolved', () => {
   });
 
   it('when args contain few links already loaded images', done => {
-    let img1 = new Image();
-    img1.src = getImageUrl();
+    let img = new Image();
+    img.src = getImageUrl();
 
     const images = [
       getImageUrl(),
-      img1,
+      img
     ];
 
-    const result = fetchImages(images);
-
-    result.then(values => {
-      const result = fetchImages(images);
-
-      result.should.to.eventually.be.an('array');
-      result.then(values => console.log(values));
-      result.then(() => done());
+    img.addEventListener('load', () => {
+      fetchImages(images).should.to.eventually.be.an('array').notify(done);
     });
   });
 });
