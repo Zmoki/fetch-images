@@ -7,7 +7,7 @@ chai.should();
 
 const getImageUrl = () => {
   // Hash in the end to avoid browser caching images
-  return 'http://lorempixel.com/1900/1900?h=' +
+  return 'http://lorempixel.com/200/200?h=' +
     Math.floor(Math.random() * 10000);
 };
 
@@ -87,5 +87,25 @@ describe('fetchImages to be resolved', () => {
     img2.src = getImageUrl();
 
     return result.should.to.eventually.be.an('array');
+  });
+
+  it('when args contain few links already loaded images', done => {
+    let img1 = new Image();
+    img1.src = getImageUrl();
+
+    const images = [
+      getImageUrl(),
+      img1,
+    ];
+
+    const result = fetchImages(images);
+
+    result.then(values => {
+      const result = fetchImages(images);
+
+      result.should.to.eventually.be.an('array');
+      result.then(values => console.log(values));
+      result.then(() => done());
+    });
   });
 });
