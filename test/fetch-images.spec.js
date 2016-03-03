@@ -23,15 +23,15 @@ describe('fetchImages to be rejected', () => {
       return fetchImages().should.to.eventually.be.rejectedWith('Images is not defined.');
     });
 
-    it('if args is empty', () => {
+    it('if args array is empty', () => {
       return fetchImages([]).should.to.eventually.be.rejectedWith('Images is not defined.');
     });
 
-    it('if args is not array', () => {
-      return fetchImages('blah').should.to.eventually.be.rejectedWith('Images is not defined.');
+    it('if args contain bad url', () => {
+      return fetchImages('blah').should.to.eventually.be.rejectedWith('Error while load blah.');
     });
   });
-  it('if images contain bad url', () => {
+  it('if array of images contain bad url', () => {
     const images = [
       getImageUrl(),
       'blah',
@@ -42,7 +42,7 @@ describe('fetchImages to be rejected', () => {
 });
 
 describe('fetchImages to be resolved', () => {
-  describe('when args contain single real image url', () => {
+  describe('when args array contain single real image url', () => {
     it('with array', () => {
       return fetchImages([getImageUrl()]).should.to.eventually.be.an('array');
     });
@@ -56,7 +56,7 @@ describe('fetchImages to be resolved', () => {
     });
   });
 
-  it('when args contain few links', () => {
+  it('when args array contain few links', () => {
     const images = [
       getImageUrl(),
       getImageUrl()
@@ -68,7 +68,7 @@ describe('fetchImages to be resolved', () => {
     return result.should.to.eventually.be.an('array');
   });
 
-  it('when args contain few links and few HTMLImageElement', () => {
+  it('when args array contain few links and few HTMLImageElement', () => {
     let img1 = new Image();
     img1.src = getImageUrl();
     let img2 = new Image();
@@ -89,7 +89,28 @@ describe('fetchImages to be resolved', () => {
     return result.should.to.eventually.be.an('array');
   });
 
-  it('when args contain few links already loaded images', done => {
+  it('when args contain few links and few HTMLImageElement', () => {
+    let img1 = new Image();
+    img1.src = getImageUrl();
+    let img2 = new Image();
+
+    const images = [
+      getImageUrl(),
+      img1,
+      getImageUrl(),
+      img2
+    ];
+
+    const result = fetchImages(...images);
+
+    result.then(values => console.log(values));
+
+    img2.src = getImageUrl();
+
+    return result.should.to.eventually.be.an('array');
+  });
+
+  it('when args array contain few links already loaded images', done => {
     let img = new Image();
     img.src = getImageUrl();
 

@@ -1,5 +1,14 @@
-function fetchImages(images) {
+function fetchImages() {
   return new Promise((resolve, reject) => {
+    let images;
+
+    const args = Array.from(arguments);
+    if(args.length === 1 && Array.isArray(args[0])) {
+      images = args[0];
+    } else {
+      images = args;
+    }
+
     if(!images || !Array.isArray(images) || !images.length) {
       reject('Images is not defined.');
     }
