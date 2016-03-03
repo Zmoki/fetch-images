@@ -14,6 +14,10 @@ function fetchImages(images) {
           innerReject(`${image} is not image.`);
         }
 
+        if(isHTMLImageElement && image.complete) {
+          innerResolve([img, 'completed']);
+        }
+
         let img = isHTMLImageElement ? image : new Image();
 
         img.addEventListener('load', () => {
