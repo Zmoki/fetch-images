@@ -29,6 +29,12 @@ fetchImages(images)
   })
 .catch(err => console.log(err));
 
+fetchImages(...images)
+  .then(values => {
+    values.map(value => console.log(value));
+  })
+.catch(err => console.log(err));
+
 fetchImages(failImages)
   .then(values => {
     values.map(value => console.lol(value));

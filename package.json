@@ -25,7 +25,8 @@
     "build": "npm run build:lib && npm run build:dist && npm run build:dist:min",
     "preversion": "npm run clean && npm run check",
     "version": "npm run build",
-    "prepublish": "npm run clean && npm run build"
+    "prepublish": "npm run clean && npm run build",
+    "build:demo": "webpack --config webpack.config.demo.js"
   },
   "repository": {
     "type": "git",

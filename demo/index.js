@@ -25,6 +25,12 @@ fetchImages(images)
   })
 .catch(err => document.getElementById("error").innerText = err);
 
+fetchImages(...images)
+  .then(values => {
+    values.map(value => document.getElementById("result2").appendChild(value[0]));
+  })
+.catch(err => document.getElementById("error").innerText = err);
+
 fetchImages(failImages)
   .then(values => {
     values.map(value => document.getElementById("result").appendChild(value[0]));
